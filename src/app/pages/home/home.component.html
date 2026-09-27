@@ -1,0 +1,80 @@
+<div class="home-page">
+
+  <div class="home-card">
+
+    <!-- Small heart -->
+    <div class="heart">
+      ♡
+    </div>
+
+    <p class="eyebrow">
+      Very important question
+    </p>
+
+    <h1>
+      So...<br>
+       should we make some plans together? ❤️
+    </h1>
+
+    <p class="subtitle">
+      Think carefully. Your answer may have consequences. :)
+    </p>
+
+
+    <!-- Buttons -->
+    <div class="buttons-container">
+
+      <!-- YES -->
+      <button
+        type="button"
+        class="yes-button"
+        (click)="sayYes()">
+
+        <span>❤️</span>
+        Yes, obviously
+
+      </button>
+
+
+      <!-- MAYBE -->
+      <button
+        type="button"
+        class="maybe-button"
+        (click)="sayMaybe()">
+
+        <span>😌</span>
+        Maybe...
+
+      </button>
+
+
+      <!-- NO -->
+      <button
+        type="button"
+        class="no-button"
+        [style.transform]="
+          'translate(' + noX + 'px, ' + noY + 'px)'
+        "
+        (mouseenter)="moveNoButton()"
+        (click)="moveNoButton()">
+
+        <span>🙅‍♀️</span>
+        No
+
+      </button>
+
+    </div>
+
+
+    <p class="hint">
+      {{ message }}
+    </p>
+
+
+    <p class="footer-text">
+      Made with questionable amounts of confidence :)
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,272 @@
+<div class="complete-page">
+
+    <div class="complete-container">
+  
+  ```
+  <!-- ========================= -->
+  <!-- SUCCESS STATE              -->
+  <!-- ========================= -->
+  
+  <div class="submitted" *ngIf="submitted">
+  
+    <div class="success-icon">
+      💌
+    </div>
+  
+    <p class="eyebrow">
+      All done
+    </p>
+  
+    <h1>
+      It's on its way. ❤️
+    </h1>
+  
+    <p class="subtitle">
+      Thanks for answering everything.
+    </p>
+  
+    <div class="success-message">
+      <span>✨</span>
+      I'll take it from here.
+    </div>
+  
+  </div>
+  
+  
+  <!-- ========================= -->
+  <!-- MAIN STATE                 -->
+  <!-- ========================= -->
+  
+  <div *ngIf="!submitted">
+  
+    <!-- Intro -->
+  
+    <div class="intro-section">
+  
+      <div class="big-emoji">
+        👀
+      </div>
+  
+      <p class="eyebrow">
+        One last thing
+      </p>
+  
+      <h1>
+        So... are we doing this?
+      </h1>
+  
+      <p class="subtitle">
+        Be honest. I promise I won't judge. 😌
+      </p>
+  
+    </div>
+  
+  
+    <!-- ========================= -->
+    <!-- YES / MAYBE               -->
+    <!-- ========================= -->
+  
+    <div class="question-card">
+  
+      <button
+        type="button"
+        class="answer-button"
+        [class.selected]="answers.meet === 'Yes ❤️'"
+        (click)="selectAnswer('Yes ❤️')">
+  
+        <span class="answer-emoji">
+          ❤️
+        </span>
+  
+        <div class="answer-content">
+  
+          <strong>
+            Yes, let's do it
+          </strong>
+  
+          <span>
+            Sounds like a plan.
+          </span>
+  
+        </div>
+  
+      </button>
+  
+  
+      <button
+        type="button"
+        class="answer-button"
+        [class.selected]="answers.meet === 'Maybe 😌'"
+        (click)="selectAnswer('Maybe 😌')">
+  
+        <span class="answer-emoji">
+          😌
+        </span>
+  
+        <div class="answer-content">
+  
+          <strong>
+            Maybe...
+          </strong>
+  
+          <span>
+            Let's figure it out.
+          </span>
+  
+        </div>
+  
+      </button>
+  
+    </div>
+  
+  
+    <!-- ========================= -->
+    <!-- SUMMARY                   -->
+    <!-- ========================= -->
+  
+    <div
+      class="summary-card"
+      *ngIf="answers.meet">
+  
+      <p class="summary-title">
+        Your little plan ✨
+      </p>
+  
+  
+      <div class="summary-row">
+  
+        <span>📅</span>
+  
+        <span>
+          {{ answers.day || 'Not specified' }}
+        </span>
+  
+      </div>
+  
+  
+      <div class="summary-row">
+  
+        <span>🕐</span>
+  
+        <span>
+          {{ answers.time || 'Not specified' }}
+        </span>
+  
+      </div>
+  
+  
+      <div class="summary-row">
+  
+        <span>✨</span>
+  
+        <span>
+          {{ answers.activity || 'Not specified' }}
+        </span>
+  
+      </div>
+  
+  
+      <div class="summary-row">
+  
+        <span>🍝</span>
+  
+        <span>
+          {{ answers.food || 'Not specified' }}
+        </span>
+  
+      </div>
+  
+  
+      <div class="summary-row">
+  
+        <span>📍</span>
+  
+        <span>
+          {{ answers.location || 'Not specified' }}
+        </span>
+  
+      </div>
+  
+  
+      <!-- Optional note -->
+  
+      <div
+        class="summary-row"
+        *ngIf="answers.note">
+  
+        <span>💭</span>
+  
+        <span>
+          {{ answers.note }}
+        </span>
+  
+      </div>
+  
+  
+      <div class="summary-divider"></div>
+  
+  
+      <div class="summary-row">
+  
+        <span>❤️</span>
+  
+        <span>
+          {{ answers.meet }}
+        </span>
+  
+      </div>
+  
+  
+      <!-- ========================= -->
+      <!-- SUBMIT BUTTON              -->
+      <!-- ========================= -->
+  
+      <button
+        type="button"
+        class="submit-button"
+        [disabled]="submitting"
+        (click)="submit()">
+  
+        <span *ngIf="!submitting">
+          Submit
+        </span>
+  
+        <span *ngIf="submitting">
+          Sending...
+        </span>
+  
+        <span *ngIf="!submitting">
+          →
+        </span>
+  
+      </button>
+  
+  
+      <!-- Error -->
+  
+      <p
+        class="error-message"
+        *ngIf="error">
+  
+        Something went wrong while sending your response.
+        Please try again.
+  
+      </p>
+  
+  
+    </div>
+  
+  </div>
+  
+  
+  <!-- Footer -->
+  
+  <p class="footer-text">
+    Made with questionable amounts of thought :)
+  </p>
+  ```
+  
+    </div>
+  
+  </div>
+  

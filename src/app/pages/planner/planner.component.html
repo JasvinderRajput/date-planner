@@ -1,0 +1,342 @@
+<div class="planner-page">
+
+    <div class="planner-container">
+  
+      <!-- Header -->
+  
+      <div class="planner-header">
+  
+        <button
+          *ngIf="currentStep > 0"
+          class="back-button"
+          (click)="previousStep()">
+  
+          ←
+  
+        </button>
+  
+        <div class="step-counter">
+          {{ currentStep + 1 }} / 6
+        </div>
+  
+      </div>
+  
+  
+      <!-- Progress -->
+  
+      <div class="progress-track">
+  
+        <div
+          class="progress-bar"
+          [style.width.%]="((currentStep + 1) / 6) * 100">
+        </div>
+  
+      </div>
+  
+  
+      <!-- Question Card -->
+  
+      <div class="question-card">
+  
+  
+        <!-- STEP 1 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 0">
+  
+          <div class="question-emoji">
+            📅
+          </div>
+  
+          <p class="question-label">
+            Let's start with the basics
+          </p>
+  
+          <h1>
+            When are you free?
+          </h1>
+  
+          <p class="question-description">
+            Pick a day that works for you.
+          </p>
+  
+  
+          <div class="options">
+  
+            <button
+              *ngFor="let day of days"
+              class="option-card"
+              (click)="selectOption('day', day.value)">
+  
+              <span class="option-emoji">
+                {{ day.emoji }}
+              </span>
+  
+              <span class="option-label">
+                {{ day.label }}
+              </span>
+  
+              <span class="option-arrow">
+                →
+              </span>
+  
+            </button>
+  
+          </div>
+  
+        </div>
+  
+  
+        <!-- STEP 2 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 1">
+  
+          <div class="question-emoji">
+            🕐
+          </div>
+  
+          <p class="question-label">
+            No pressure
+          </p>
+  
+          <h1>
+            What time works?
+          </h1>
+  
+          <p class="question-description">
+            Rough timing is perfectly fine.
+          </p>
+  
+  
+          <div class="options">
+  
+            <button
+              *ngFor="let time of times"
+              class="option-card"
+              (click)="selectOption('time', time.value)">
+  
+              <span class="option-emoji">
+                {{ time.emoji }}
+              </span>
+  
+              <span class="option-label">
+                {{ time.label }}
+              </span>
+  
+              <span class="option-arrow">
+                →
+              </span>
+  
+            </button>
+  
+          </div>
+  
+        </div>
+  
+  
+        <!-- STEP 3 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 2">
+  
+          <div class="question-emoji">
+            ✨
+          </div>
+  
+          <p class="question-label">
+            Now the important part
+          </p>
+  
+          <h1>
+            What's the vibe?
+          </h1>
+  
+          <p class="question-description">
+            What sounds fun?
+          </p>
+  
+  
+          <div class="options">
+  
+            <button
+              *ngFor="let activity of activities"
+              class="option-card"
+              (click)="selectOption('activity', activity.value)">
+  
+              <span class="option-emoji">
+                {{ activity.emoji }}
+              </span>
+  
+              <span class="option-label">
+                {{ activity.label }}
+              </span>
+  
+              <span class="option-arrow">
+                →
+              </span>
+  
+            </button>
+  
+          </div>
+  
+        </div>
+  
+  
+        <!-- STEP 4 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 3">
+  
+          <div class="question-emoji">
+            🍽️
+          </div>
+  
+          <p class="question-label">
+            Because this matters
+          </p>
+  
+          <h1>
+            What do you want to eat?
+          </h1>
+  
+          <p class="question-description">
+            Choose wisely. 😌
+          </p>
+  
+  
+          <div class="options">
+  
+            <button
+              *ngFor="let food of foods"
+              class="option-card"
+              (click)="selectOption('food', food.value)">
+  
+              <span class="option-emoji">
+                {{ food.emoji }}
+              </span>
+  
+              <span class="option-label">
+                {{ food.label }}
+              </span>
+  
+              <span class="option-arrow">
+                →
+              </span>
+  
+            </button>
+  
+          </div>
+  
+        </div>
+  
+  
+        <!-- STEP 5 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 4">
+  
+          <div class="question-emoji">
+            📍
+          </div>
+  
+          <p class="question-label">
+            Your call
+          </p>
+  
+          <h1>
+            Where should we go?
+          </h1>
+  
+          <p class="question-description">
+            Pick whichever feels right.
+          </p>
+  
+  
+          <div class="options">
+  
+            <button
+              *ngFor="let location of locations"
+              class="option-card"
+              (click)="selectOption('location', location.value)">
+  
+              <span class="option-emoji">
+                {{ location.emoji }}
+              </span>
+  
+              <span class="option-label">
+                {{ location.label }}
+              </span>
+  
+              <span class="option-arrow">
+                →
+              </span>
+  
+            </button>
+  
+          </div>
+  
+        </div>
+  
+  
+        <!-- STEP 6 -->
+  
+        <div
+          class="question-content"
+          *ngIf="currentStep === 5">
+  
+          <div class="question-emoji">
+            💭
+          </div>
+  
+          <p class="question-label">
+            Almost done
+          </p>
+  
+          <h1>
+            Anything else?
+          </h1>
+  
+          <p class="question-description">
+            Anything you want me to know?
+          </p>
+  
+  
+          <textarea
+            [(ngModel)]="answers.note"
+            class="note-input"
+            placeholder="Maybe there's something I missed..."
+            rows="5">
+          </textarea>
+  
+  
+          <button
+            class="continue-button"
+            (click)="nextStep()">
+  
+            One last question
+  
+            <span>→</span>
+  
+          </button>
+  
+        </div>
+  
+  
+      </div>
+  
+  
+      <!-- Footer -->
+  
+      <p class="planner-footer">
+        Don't overthink it :)
+      </p>
+  
+    </div>
+  
+  </div>
