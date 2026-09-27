@@ -91,7 +91,7 @@ export class CompleteComponent {
         sessionStorage.removeItem('dateAnswers');
 
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
 
         console.error(
           'Failed to send email:',
