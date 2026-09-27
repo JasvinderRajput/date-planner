@@ -31,6 +31,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/date-planner/",
               "budgets": [
                 {
                   "type": "initial",

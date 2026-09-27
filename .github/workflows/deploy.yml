@@ -36,13 +36,16 @@ jobs:
       - name: Build Angular
         run: npm run build
 
+      - name: Add GitHub Pages route fallback
+        run: cp ./dist/date-planner/index.html ./dist/date-planner/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ./dist/date-planner
 
       - name: Deploy to GitHub Pages
         id: deployment
