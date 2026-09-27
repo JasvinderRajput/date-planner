@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import emailjs from '@emailjs/browser';
 
 @Component({
@@ -18,7 +19,12 @@ export class CompleteComponent {
   private readonly TEMPLATE_ID = 'template_m1d3yju';
   private readonly PUBLIC_KEY = 'SGJ5vKrcu0WYP6N4H';
 
-  constructor() {
+  readonly participantName: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.participantName = (
+      this.route.snapshot.queryParamMap.get('name') || ''
+    ).trim().slice(0, 100);
 
     const savedAnswers = sessionStorage.getItem('dateAnswers');
 
@@ -50,6 +56,8 @@ export class CompleteComponent {
     this.error = false;
 
     const templateParams = {
+
+      name: this.participantName || 'Unknown',
 
       day: this.answers.day || 'Not specified',
 

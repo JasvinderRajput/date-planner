@@ -172,6 +172,6 @@ export class PlannerComponent {
       JSON.stringify(this.answers)
     );
 
-    this.router.navigate(['/complete']);
+    this.router.navigate(['/complete'], { queryParamsHandling: 'preserve' });
   }
 }

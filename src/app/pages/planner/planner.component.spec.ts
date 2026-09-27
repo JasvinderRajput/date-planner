@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 
 import { PlannerComponent } from './planner.component';
 
@@ -8,7 +9,14 @@ describe('PlannerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PlannerComponent]
+      declarations: [PlannerComponent],
+      providers: [
+        { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } },
+        {
+          provide: ActivatedRoute,
+          useValue: { snapshot: { queryParamMap: convertToParamMap({ name: 'Priya' }) } }
+        }
+      ]
     });
     fixture = TestBed.createComponent(PlannerComponent);
     component = fixture.componentInstance;
@@ -17,5 +25,14 @@ describe('PlannerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('preserves query parameters when continuing to the completion page', () => {
+    component.goToComplete();
+
+    expect(TestBed.inject(Router).navigate).toHaveBeenCalledWith(
+      ['/complete'],
+      { queryParamsHandling: 'preserve' }
+    );
   });
 });

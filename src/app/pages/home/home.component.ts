@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +8,27 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
-  noX = 125;
-  noY = 75;
+  noX = 0;
+  noY = 0;
 
   message = "Don't overthink it ;)";
 
   noAttempts = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   sayYes(): void {
-    this.router.navigate(['/plan']);
+    this.router.navigate(['/plan'], { queryParamsHandling: 'preserve' });
   }
 
   sayMaybe(): void {
-    this.router.navigate(['/plan']);
+    this.router.navigate(['/plan'], { queryParamsHandling: 'preserve' });
   }
 
-  moveNoButton(): void {
+  moveNoButton(buttonArea: HTMLElement, button: HTMLButtonElement): void {
     this.noAttempts++;
 
     const messages = [
@@ -43,19 +46,24 @@ export class HomeComponent {
 
     this.message = messages[index];
 
-    /*
-     * Move the No button around the button area.
-     * Keep it within reasonable boundaries.
-     */
+    const maxX = Math.max(
+      0,
+      (buttonArea.clientWidth - button.offsetWidth) / 2 - 8
+    );
+    const maxY = Math.max(
+      0,
+      buttonArea.clientHeight - 128 - button.offsetHeight - 8
+    );
+
     const positions = [
-      { x: 120, y: 75 },
-      { x: -120, y: 75 },
-      { x: 160, y: 20 },
-      { x: -150, y: 20 },
-      { x: 80, y: 115 },
-      { x: -80, y: 115 },
-      { x: 180, y: 90 },
-      { x: -180, y: 90 }
+      { x: -maxX, y: 0 },
+      { x: maxX, y: 0 },
+      { x: -maxX, y: maxY },
+      { x: maxX, y: maxY },
+      { x: 0, y: maxY },
+      { x: -maxX / 2, y: maxY / 2 },
+      { x: maxX / 2, y: maxY / 2 },
+      { x: 0, y: maxY / 2 }
     ];
 
     const position =

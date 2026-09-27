@@ -22,7 +22,7 @@
 
 
     <!-- Buttons -->
-    <div class="buttons-container">
+    <div class="buttons-container" #buttonArea>
 
       <!-- YES -->
       <button
@@ -52,11 +52,11 @@
       <button
         type="button"
         class="no-button"
+        #noButton
         [style.transform]="
-          'translate(' + noX + 'px, ' + noY + 'px)'
+          'translateX(calc(-50% + ' + noX + 'px)) translateY(' + noY + 'px)'
         "
-        (mouseenter)="moveNoButton()"
-        (click)="moveNoButton()">
+        (click)="moveNoButton(buttonArea, noButton)">
 
         <span>🙅‍♀️</span>
         No
