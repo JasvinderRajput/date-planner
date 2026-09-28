@@ -130,6 +130,11 @@ h1 {
   text-shadow: 0 2px 12px rgba(119, 90, 111, 0.08);
 }
 
+.name-highlight {
+  color: #b34c7b;
+  text-shadow: 0 3px 14px rgba(179, 76, 123, 0.2);
+}
+
 
 /* =================================
    SUBTITLE

@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent {
 
+  name: string;
+
   noX = 0;
   noY = 0;
 
@@ -18,7 +20,9 @@ export class HomeComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.name = this.route.snapshot.queryParamMap.get('name')?.trim() || '';
+  }
 
   sayYes(): void {
     this.router.navigate(['/plan'], { queryParamsHandling: 'preserve' });

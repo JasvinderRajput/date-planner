@@ -27,6 +27,12 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('greets the person named in the query string with a sweet word', () => {
+    const heading = fixture.nativeElement.querySelector('h1') as HTMLElement;
+
+    expect(heading.textContent).toContain('Hey, sweet Priya...');
+  });
+
   it('preserves the participant name when starting the plan', () => {
     component.sayYes();
 

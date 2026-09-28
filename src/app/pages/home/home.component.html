@@ -12,7 +12,10 @@
     </p>
 
     <h1>
-      So...<br>
+      <ng-container *ngIf="name; else defaultGreeting">
+        Hey, sweet <span class="name-highlight">{{ name }}</span>...<br>
+      </ng-container>
+      <ng-template #defaultGreeting>So...<br></ng-template>
        should we make some plans together? ❤️
     </h1>
 
